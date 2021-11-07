@@ -18,7 +18,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Sales should be $ {}'.format(output))
+    return render_template('index.html', prediction_text='Likelihood of suicide should be $ {}'.format(output))
 
 @app.route('/results',methods=['POST'])
 def results():
