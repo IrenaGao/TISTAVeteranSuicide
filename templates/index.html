@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Suicide likelihood prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+  <div class="login">
+    <h1>Suicide Ideation Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <label for="q1">Any Known Substance Abuse?</label><br>
+      <input type="text" name="q1" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
+      <label for="q2">Any known history of Huntington's cholera?</label><br>
+      <input type="text" name="q2" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
+      <label for="q3">Any known experience of Psychogenic pain?</label><br>
+      <input type="text" name="q3" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
+      <label for="q4">Any known history of vision impairment?</label><br>
+      <input type="text" name="q4" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
+      <label for="q5">Any recent use of Veteran Health Administration serivces within 24 months?</label><br>
+      <input type="text" name="q5" placeholder="Enter the number of days of VHA use" required="required" />
+      <label for="q6">Any previous psychiatric discharges within 24 months?</label><br>
+      <input type="text" name="q6" placeholder="Enter the number of discharges" required="required" />
+
+
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict likelihood of suicide</button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+  </div>
+
+
+</body>
+
+</html>
