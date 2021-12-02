@@ -21,13 +21,11 @@ def home():
 def logPredict():
 
     int_features = [int(x) for x in request.form.values()]
-    print(int_features)
-    final_features = [np.array(int_features)]
-    prediction = logReg.predict(final_features)
+    int_features.append(int_features[0]*int_features[-2])
+    final_features = np.array(int_features)
+    prediction = round(logReg.predict_proba(final_features.reshape(1,-1))[0][1], 2)
 
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='Suicide Likelihood is {}'.format(output))
+    return render_template('index.html', prediction_text='Suicide Likelihood is {}'.format(prediction))
 
 @app.route('/lstmPredict',methods=['GET','POST'])
 def lstmPredict():
@@ -45,7 +43,7 @@ def lstmPredict():
 
 @app.route('/getData',methods=['GET'])
 def getData():
-    return 
+    return
 
 @app.route('/results',methods=['POST'])
 def results():
