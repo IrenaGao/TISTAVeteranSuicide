@@ -17,28 +17,36 @@
     <h1>Suicide Ideation Prediction</h1>
 
     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
-      <label for="q1">Any Known Substance Abuse?</label><br>
+    <form action="{{ url_for('logPredict')}}" method="post">
+      <label for="q1">1. Are you currently in IP substance abuse section?</label><br>
       <input type="text" name="q1" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q2">Any known history of Huntington's cholera?</label><br>
+      <label for="q2">2. Are you currently in residential substance section?</label><br>
       <input type="text" name="q2" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q3">Any known experience of Psychogenic pain?</label><br>
+      <label for="q3">3. Have you had any cases of Hungtington's chorea in the past 24 months?</label><br>
       <input type="text" name="q3" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q4">Any known history of vision impairment?</label><br>
+      <label for="q4">4. Have you had psychogenic pain in the past 24 months?</label><br>
       <input type="text" name="q4" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q5">Any recent use of Veteran Health Administration serivces within 24 months?</label><br>
-      <input type="text" name="q5" placeholder="Enter the number of days of VHA use" required="required" />
-      <label for="q6">Any previous psychiatric discharges within 24 months?</label><br>
-      <input type="text" name="q6" placeholder="Enter the number of discharges" required="required" />
-
-
-
+      <label for="q5">5. Have you had any vision impairments in the past 24 months?</label><br>
+      <input type="text" name="q5" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
+      <label for="q6">6. Have you had cumulative days of VHA use in the past 24 months?</label><br>
+      <input type="text" name="q6" placeholder="Enter the number of days of VHA use" required="required" />
+      <label for="q7">7. Have you had psychiatric discharges in the past 24 months?</label><br>
+      <input type="text" name="q7" placeholder="Enter the number of discharges" required="required" />
       <button type="submit" class="btn btn-primary btn-block btn-large">Predict likelihood of suicide</button>
     </form>
 
     <br>
     <br>
+
+    <form action="{{ url_for('lstmPredict')}}" method="post">
+      <label for="q1">Enter your tweet here</label><br>
+      <input type="text" name="q1" placeholder="Enter your tweet here" required="required" />
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict likelihood of suicide</button>
+    </form>
+
+    <br>
     {{ prediction_text }}
+
 
   </div>
 
