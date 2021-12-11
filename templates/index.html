@@ -4,53 +4,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Suicide likelihood prediction</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 
 <body>
-  <div class="login">
-    <h1>Suicide Ideation Prediction</h1>
-
-    <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('logPredict')}}" method="post">
-      <label for="q1">1. Are you currently in IP substance abuse section?</label><br>
-      <input type="text" name="q1" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q2">2. Are you currently in residential substance section?</label><br>
-      <input type="text" name="q2" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q3">3. Have you had any cases of Hungtington's chorea in the past 24 months?</label><br>
-      <input type="text" name="q3" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q4">4. Have you had psychogenic pain in the past 24 months?</label><br>
-      <input type="text" name="q4" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q5">5. Have you had any vision impairments in the past 24 months?</label><br>
-      <input type="text" name="q5" placeholder="Enter 1 If Yes 0 otherwise" required="required" />
-      <label for="q6">6. Have you had cumulative days of VHA use in the past 24 months?</label><br>
-      <input type="text" name="q6" placeholder="Enter the number of days of VHA use" required="required" />
-      <label for="q7">7. Have you had psychiatric discharges in the past 24 months?</label><br>
-      <input type="text" name="q7" placeholder="Enter the number of discharges" required="required" />
-      <button type="submit" class="btn btn-primary btn-block btn-large">Predict likelihood of suicide</button>
-    </form>
-
-    <br>
-    <br>
-
-    <form action="{{ url_for('lstmPredict')}}" method="post">
-      <label for="q1">Enter your tweet here</label><br>
-      <input type="text" name="q1" placeholder="Enter your tweet here" required="required" />
-      <button type="submit" class="btn btn-primary btn-block btn-large">Predict likelihood of suicide</button>
-    </form>
-
-    <br>
-    {{ prediction_text }}
-
-
+  <div class="header">
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/">Self Assessment</a></li>
+      <li><a href="/friendsandfam">Available Help</a></li>
+      <li><a href="/models">Models</a></li>
+    </ul>
+    <img class="tista" src="{{url_for('static', filename='tistalogo.png')}}" />
+    <p class="title">SELF ASSESSMENT</p>
   </div>
 
+  <img class="comfort" src="{{url_for('static', filename='doctorpatient.jpeg')}}" />
+  <!-- Main Input For Receiving Query to our ML -->
+  <form action="{{ url_for('logPredict')}}" method="post">
+    <p class="top">We want to have a better sense of how you're feeling and how your mental state is!<br><br> During the
+      last 4 weeks, how often have you been bothered by any of the following?</p>
+    <label for="q1">1. Are you currently in the In-Patient substance abuse section?</label>
+    <div>
+      <input type="radio" name="q1" value="1" />Yes
+      <input type="radio" name="q1" value="0" />No
+    </div>
+    <label for="q2">2. Are you currently in the residential substance section?</label>
+    <div>
+      <input type="radio" name="q2" value="1" />Yes
+      <input type="radio" name="q2" value="0" />No
+    </div>
+    <label for="q3">3. Have you had any cases of Huntington's chorea in the past 24 months?</label>
+    <div>
+      <input type="radio" name="q3" value="1" />Yes
+      <input type="radio" name="q3" value="0" />No
+    </div>
+    <label for="q4">4. Have you had cases of psychogenic pain in the past 24 months?</label>
+    <div>
+      <input type="radio" name="q4" value="1" />Yes
+      <input type="radio" name="q4" value="0" />No
+    </div>
+    <label for="q5">5. Have you had any vision impairments in the past 24 months?</label>
+    <div>
+      <input type="radio" name="q5" value="1" />Yes
+      <input type="radio" name="q5" value="0" />No
+    </div>
+    <label for="q6">6. How many times have you used the Veteran's Health Administration services in the past 24 months?
+      (put 0 if none)</label>
+    <div>
+      <input type="number" name="q6" placeholder="Number of days" required="required" />
+    </div>
+    <label for="q7">7. How many psychiatric hospital visits have you had in the past 24 months?</label>
+    <div>
+      <input type="number" name="q7" placeholder="Number of discharges" required="required" />
+    </div>
+    <input type="submit" class="btn btn-primary btn-block btn-large" />
+  </form>
 
+  <p class="prediction">{{ prediction_text_log }}</p>
+
+  <form action="{{ url_for('lstmPredict')}}" method="post">
+    <!-- <img class="twitter" src="{{url_for('static', filename='twitterlogo.png')}}" /> -->
+    <p>How have you sounded on social media? If you use Twitter, you can enter a recent tweet of yours
+      here!</p>
+    <textarea rows=4 cols=50 name="q1" required></textarea>
+    <label for="tweet"></label>
+    <!-- <input type="text" name="q1" placeholder="Enter your tweet here" required="required" /> -->
+    <input type="submit" class="btn btn-primary btn-block btn-large tweetsubmit" />
+  </form>
+
+  <p class="prediction">{{ prediction_text_twitter }}</p>
 </body>
 
 </html>

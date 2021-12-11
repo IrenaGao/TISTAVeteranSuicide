@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Veterans Suicide Prevention</title>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="header">
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/">Self Assessment</a></li>
+      <li><a href="/friendsandfam">Available Help</a></li>
+      <li><a href="/models">Models</a></li>
+    </ul>
+    <img class="tista" src="{{url_for('static', filename='tistalogo.png')}}" />
+    <p class="title">AVAILABLE HELP</p>
+    <p class="subtitle">If someone you know might need help, please refer below.</p>
+  </div>
+  <!-- {% if prediction_text_log != "" %} -->
+  <p class="pred">{{ prediction_text_log }}
+    {{ prediction_text_twitter }}
+    <br><br>
+    <span class="disclaimer">Disclaimer: please use your best judgment in seeking help. This model was trained on
+      synthetic
+      data and may not be suitable for all cases.</span>
+  </p>
+  <!-- {% endif %} -->
+  <img class="comfort" src="{{url_for('static', filename='comfort.jpeg')}}" />
+  <p class="sectiontitle">For veterans:</p>
+  <div class="suicide">
+    <ol>
+      <li>Chat online with trained counselors at www.VeteransCrisisLine.net</li>
+      <li>Use the smartphone app called Virtual Hope Box to view photos of friends and family, videos of
+        loved ones, and music - tailored specifically to your needs!</li>
+      <li>Avoid drugs and alcohol - they can cause you to make poor decisions.</li>
+      <li>Remember your value that your loved ones have for you!</li>
+    </ol>
+  </div>
+  <p class="sectiontitle">For friends and family:</p>
+  <div class="suicide">
+    <ol>
+      <li>
+        <p>Be available and offer support. Ask questions such as:</p>
+        <ul>
+          <li class="fwens">How are you feeling?</li>
+          <li class="fwens">Do you ever feel like just giving up?</li>
+        </ul>
+      </li>
+      <li>
+        Be respectful and acknowledge the person's feelings, offering reassurance that things can get better.
+      </li>
+      <li>
+        Encourage the person to seek treatment from a doctor or mental health provider.
+      </li>
+      <li>
+        Remove potentially dangerous items from the person's home, if possible.
+      </li>
+    </ol>
+  </div>
+</body>
+
+</html>

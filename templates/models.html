@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Suicide likelihood prediction</title>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="header">
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/">Self Assessment</a></li>
+      <li><a href="/friendsandfam">Available Help</a></li>
+      <li><a href="/models">Models</a></li>
+    </ul>
+    <img class="tista" src="{{url_for('static', filename='tistalogo.png')}}" />
+    <p class="title">MODEL EXPLANATION</p>
+  </div>
+  <div class="suicide">
+    <p class="sectiontitle">Logistic Regression Model</p>
+    <p class="suicideno">We used logistic regression to predict the percentage risk of suicide based on a veteran's
+      answers. Our model has an accuracy of 65% and recall of 53%, which means that our model is likely to correctly
+      identify a veteran's risk, along with which veterans are suicidal. The final features we used were “CurrIPSub”,
+      “CurrResSub”, “hc24”, “psy24”, “vision24”, “CumDaysUsein24MoPrior” and “mhdisprior24mo” with the interaction term
+      between “CurrIPSub” and “CumDaysUsein24MoPrior.” Through statistical methods such as wrapper-based feature
+      selection and cross validation, we determined that these variables are the most effective predictors of suicide
+      risk.</p>
+
+    <p class="sectiontitle">NLP Twitter Model</p>
+    <p class="suicideno">We used NLP text classification to analyze text from Twitter tweets and predict suicide risk
+      from a psychological perspective. Inspired by the success of similar models used to predict depression risk in
+      Twitter users, we trained a recurrent neural network based (LSTM) model using sentiment analysis to produce a
+      depression score for each individual tweet.
+      Using the Twint API, we scraped from Twitter and collected over 20000 suicide-related tweets, which contain
+      suicidal keywords like “tired of living”, “better off dead”, “my suicide note”, “my suicide letter”, “end my life”
+      and “depression” etc. We further used Vader and Textblob sentiment polarity scores as the proxy labels for our
+      tweet data set. To improve the accuracy of these proxy labels, we used thresholds to decide whether a certain
+      tweet is considered suicidal or non-suicidal. For example, when threshold is set to 0.2, tweets with polarity
+      lower than 0.2 will be labelled as 0 as in suicidal and 1 for non-suicidal. Finally, we trained the LSTM model on
+      our labeled data, and as a result we got an 89% validation F1 score. This indicates that our model has a high
+      precision and recall, and that we can indeed model depression/suicide risk as a function of the content of Twitter
+      posts.</p>
+  </div>
+
+</body>
+
+</html>
