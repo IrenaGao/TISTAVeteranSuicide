@@ -25,59 +25,98 @@
 
   <img class="comfort" src="{{url_for('static', filename='doctorpatient.jpeg')}}" />
   <!-- Main Input For Receiving Query to our ML -->
-  <form action="{{ url_for('logPredict')}}" method="post">
-    <p class="top">We want to have a better sense of how you're feeling and how your mental state is!<br><br> During the
-      last 4 weeks, how often have you been bothered by any of the following?</p>
-    <label for="q1">1. Are you currently in the In-Patient substance abuse section?</label>
+  <form class="first" action="{{ url_for('logPredict')}}" method="post">
+    <p class="top">We want to have a better sense of how you're feeling and how your mental state is!<br><br> How often
+      have you been bothered by any of the following?</p>
+    <label class="q" for="q1">1. Are you currently in the <span class="desc">In-Patient substance abuse</span>
+      section?</label>
+    <div class="popup">A hospital or treatment facility you reside in that focuses on intense 24-hour detoxification
+      care by
+      giving you
+      comfortable
+      and
+      supported withdrawal from drugs and alcohol, education on the negatives of addiction, and the development of
+      strategies to continue in ongoing recovery. The stay is often about a couple days to a month depending on need.
+    </div>
     <div>
       <input type="radio" name="q1" value="1" />Yes
       <input type="radio" name="q1" value="0" />No
     </div>
-    <label for="q2">2. Are you currently in the residential substance section?</label>
+    <label class="q" for="q2">2. Are you currently in the <span class="desc">residential substance
+        section</span>?</label>
+    <div class="popup">A home-like environment where medical staff assist you in residential settings by checking up on
+      you every once in a while to support your mental health issues. Usually the step after inpatient treatment, and
+      can be fairly long-term.</div>
     <div>
-      <input type="radio" name="q2" value="1" />Yes
-      <input type="radio" name="q2" value="0" />No
-    </div>
-    <label for="q3">3. Have you had any cases of Huntington's chorea in the past 24 months?</label>
-    <div>
-      <input type="radio" name="q3" value="1" />Yes
-      <input type="radio" name="q3" value="0" />No
-    </div>
-    <label for="q4">4. Have you had cases of psychogenic pain in the past 24 months?</label>
-    <div>
-      <input type="radio" name="q4" value="1" />Yes
-      <input type="radio" name="q4" value="0" />No
-    </div>
-    <label for="q5">5. Have you had any vision impairments in the past 24 months?</label>
-    <div>
-      <input type="radio" name="q5" value="1" />Yes
-      <input type="radio" name="q5" value="0" />No
-    </div>
-    <label for="q6">6. How many times have you used the Veteran's Health Administration services in the past 24 months?
-      (put 0 if none)</label>
-    <div>
-      <input type="number" name="q6" placeholder="Number of days" required="required" />
-    </div>
-    <label for="q7">7. How many psychiatric hospital visits have you had in the past 24 months?</label>
-    <div>
-      <input type="number" name="q7" placeholder="Number of discharges" required="required" />
-    </div>
-    <input type="submit" class="btn btn-primary btn-block btn-large" />
+      <div>
+        <input type="radio" name="q2" value="1" />Yes
+        <input type="radio" name="q2" value="0" />No
+      </div>
+      <label class="q" for="q3">3. Have you had any cases of <span class="desc">Huntington's chorea</span>?</label>
+      <div class="popup">Rare, inherited disease that causes the progressive breakdown (degeneration) of nerve cells in
+        the brain. Has a broad impact on a person's functional abilities and usually results in movement, thinking
+        (cognitive), and psychiatric disorders.</div>
+      <div>
+        <input type="radio" name="q3" value="1" />Yes
+        <input type="radio" name="q3" value="0" />No
+      </div>
+      <label class="q" for="q4">4. Have you had cases of <span class="desc">psychogenic pain</span> in the past 24
+        months?</label>
+      <div class="popup">Pain disorder attributed to psychological factors, which can include beliefs, fears, and strong
+        emotions. Often due to changes in the nervous system, and can manifest as headaches, muscle pains, back pains,
+        and stomach pains.</div>
+      <div>
+        <div>
+          <input type="radio" name="q4" value="1" />Yes
+          <input type="radio" name="q4" value="0" />No
+        </div>
+        <label class="q" for="q5">5. Have you had any <span class="desc">vision impairments</span> in the past 24
+          months?</label>
+        <div class="popup">Person's eyesight cannot be corrected to a "normal" level, which can be caused by a loss of
+          visual acuity, where the eye does not see objects as clearly as usual. It may also be caused by a loss of
+          visual field, where the eye cannot see as wide an area as usual without moving the eyes or turning the head.
+          The World Health Organization defines “low vision” as visual acuity between 20/70 and 20/400, with the best
+          possible correction, or a visual field of 20 degrees or less.
+        </div>
+        <div>
+          <input type="radio" name="q5" value="1" />Yes
+          <input type="radio" name="q5" value="0" />No
+        </div>
+        <label class="q" for="q6">6. How many times have you used the <span class="desc">Veteran's Health Administration
+            services</span> in the past 24
+          months?
+          (put 0 if none)</label>
+        <div class="popup">America's largest integrated health care system that provides care at 1,293 healthcare
+          facilities, including 171 medical centers and 1,112 outpatient sites of care of varying complexity (VHA
+          outpatient clinics), serving 9 million enrolled Veterans each year.
+        </div>
+        <div>
+          <input type="number" name="q6" placeholder="Number of days" required="required" />
+        </div>
+        <label class="q" for="q7">7. How many <span class="desc">psychiatric hospital visits</span> have you had in the
+          past 24
+          months?</label>
+        <div class="popup">
+          Hospitals specializing in the treatment of mental disorders, such as schizophrenia, bipolar disorder, and
+          major depressive disorder. They are for people in crisis who may need safety monitoring and assessment as well
+          as therapy and medication management.
+        </div>
+        <div>
+          <input type="number" name="q7" placeholder="Number of discharges" required="required" />
+        </div>
+        <input type="submit" class="btn btn-primary btn-block btn-large" />
   </form>
 
-  <p class="prediction">{{ prediction_text_log }}</p>
-
   <form action="{{ url_for('lstmPredict')}}" method="post">
-    <!-- <img class="twitter" src="{{url_for('static', filename='twitterlogo.png')}}" /> -->
-    <p>How have you sounded on social media? If you use Twitter, you can enter a recent tweet of yours
+    <p>How have you sounded on social media? If you use Twitter, you can enter a recent tweet of
+      yours
       here!</p>
     <textarea rows=4 cols=50 name="q1" required></textarea>
     <label for="tweet"></label>
-    <!-- <input type="text" name="q1" placeholder="Enter your tweet here" required="required" /> -->
     <input type="submit" class="btn btn-primary btn-block btn-large tweetsubmit" />
   </form>
 
-  <p class="prediction">{{ prediction_text_twitter }}</p>
+  <!-- <p class="prediction">{{ prediction_text_twitter }}</p> -->
 </body>
 
 </html>

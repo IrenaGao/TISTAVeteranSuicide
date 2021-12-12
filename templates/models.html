@@ -39,7 +39,8 @@
       depression score for each individual tweet.
       Using the Twint API, we scraped from Twitter and collected over 20000 suicide-related tweets, which contain
       suicidal keywords like “tired of living”, “better off dead”, “my suicide note”, “my suicide letter”, “end my life”
-      and “depression” etc. We further used Vader and Textblob sentiment polarity scores as the proxy labels for our
+      and “depression” etc. <br><br>We further used Vader and Textblob sentiment polarity scores as the proxy labels for
+      our
       tweet data set. To improve the accuracy of these proxy labels, we used thresholds to decide whether a certain
       tweet is considered suicidal or non-suicidal. For example, when threshold is set to 0.2, tweets with polarity
       lower than 0.2 will be labelled as 0 as in suicidal and 1 for non-suicidal. Finally, we trained the LSTM model on

@@ -51,11 +51,13 @@ h3 {
 	margin-left: 15%;
 }
 
-button {
+.button {
 	margin-left: 40%;
 	margin-top: 3%;
-	background-color: #0b71c4;
 	margin-bottom: 2%;
+	display: inline-block;
+	background-color: #0b71c4;
+	padding-bottom: 2%;
 	color: white;
 	padding: 1%;
 	padding-right: 2%;
@@ -70,6 +72,26 @@ button {
 
 .top {
 	margin-bottom: 10%;
+}
+
+.desc {
+	text-decoration: underline;
+	color: blue;
+}
+
+.q:hover + .popup {
+	display: block;
+}
+
+.popup {
+	border: solid;
+	border-color: #9bd2ff;
+	background-color: #9bd2ff;
+	border-radius: 10px;
+	padding: 2.5%;
+	display: none;
+	font-size: 14px;
+	margin-top: 2%;
 }
 
 .suicide{
@@ -89,17 +111,27 @@ button {
 	margin-right: 15%;
 }
 
+.whitespace {
+	background-color: white;
+	width: 100%;
+}
+
 form {
   border-radius: 20px;
   background-color: #f2f2f2;
 	padding-top: 5%;
-	/* width: 80%; */
 	margin-left: 20%;
 	margin-right: 20%;
-	padding-left: 10%;
-	margin-bottom: 5%;
+	/* padding-left: 10%; */
+	/* margin-bottom: 5%; */
 	padding-bottom: 5%;
 	padding-right: 10%;
+	/* border: solid; */
+}
+
+.first {
+	padding-left: 10%;
+	margin-bottom: 30%;
 }
 
 .login { 
@@ -222,7 +254,6 @@ textarea {
 	/* margin-left: 30%; */
 	margin-bottom: 3%;
 	display: inline;
-	float: left;
 }
 
 .tweet {
@@ -242,7 +273,7 @@ textarea {
 }
 
 textarea {
-	margin-left: 10%;
+	/* margin-left: 10%; */
 }
 
 .tista {
